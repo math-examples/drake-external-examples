@@ -1,0 +1,18 @@
+#!/bin/bash
+# SPDX-License-Identifier: MIT-0
+
+set -euxo pipefail
+
+cmake --version
+
+mkdir build
+pushd build
+
+cmake ..
+make
+ctest -V .
+
+popd
+
+chmod -R a+w build || true
+rm -rf build
